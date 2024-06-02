@@ -4,8 +4,8 @@ import React, { useCallback, useState } from "react"
 import { useRouter } from "next/navigation"
 // import { useRouter } from 'next/router';
 import Loading from "@/components/loading/loading.jsx"
+import { Callout } from "@/components/core"
 
-import { Callout } from "@/nextra"
 
 export default function RegisterPage({ searchParams }) {
   const router = useRouter()

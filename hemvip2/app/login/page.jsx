@@ -3,8 +3,8 @@
 import { useCallback, useState } from "react"
 import Loading from "@/components/loading/loading.jsx"
 import { useRouter } from "next/navigation"
-import { Callout } from "@/nextra"
 import { loginAction } from "./actions"
+import { Callout } from "@/components/core"
 
 export default function LoginPage({ searchParams }) {
   const router = useRouter()

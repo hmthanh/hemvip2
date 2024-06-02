@@ -1,5 +1,5 @@
-import { ThemeSwitch } from '@/nextra'
 import React from 'react'
+import { ThemeSwitch } from './core'
 
 export default function Footer() {
   return (

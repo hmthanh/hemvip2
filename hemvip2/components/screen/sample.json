@@ -1,0 +1,63 @@
+{
+  "name": "Gesture Generation Experiment",
+  "page": [
+    {
+      "type": "screen",
+      "title": "Gesture Generation Experiment",
+      "content": "Name of the first page, used as heading on the page.",
+      "videos": [
+        {
+          "link": "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+          "type": "video/mp4"
+        },
+        {
+          "link": "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+          "type": "video/mp4"
+        }
+      ],
+      "options": [
+        {
+          "name": "Left Better",
+          "id": "left"
+        },
+        {
+          "name": "Equal",
+          "id": "equal"
+        },
+        {
+          "name": "Right Better",
+          "id": "right"
+        }
+      ]
+    },
+    {
+      "type": "screen",
+      "title": "Gesture Generation Experiment",
+      "content": "Name of the first page, used as heading on the page. Page 2",
+      "videos": [
+        {
+          "link": "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+          "type": "video/mp4"
+        },
+        {
+          "link": "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+          "type": "video/mp4"
+        }
+      ],
+      "options": [
+        {
+          "name": "Left Better",
+          "id": "left"
+        },
+        {
+          "name": "Equal",
+          "id": "equal"
+        },
+        {
+          "name": "Right Better",
+          "id": "right"
+        }
+      ]
+    }
+  ]
+}

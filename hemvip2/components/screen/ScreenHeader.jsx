@@ -47,7 +47,7 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
         </button>
       )}
 
-      <h3 className="flex-grow items-center flex justify-center text-gray-800 h-full text-shadow-sm text-center text-zinc-800 text-xl font-bold">
+      <h3 className="flex-grow items-center flex justify-center text-gray-800 h-full text-shadow-sm text-center text-zinc-800 font-bold">
         {page.name}
       </h3>
 

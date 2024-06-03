@@ -1,16 +1,10 @@
 import React from "react"
 
-export function ScreenMessage() {
+export function ScreenMessage({ text }) {
   return (
-    // <Callout>
-    // <div className="text-center text-zinc-800 text-base font-medium leading-tight p-4">
-    //   Welcome to WebMUSHRA, a MUSHRA listening test where you are asked to rate
-    //   the Basic Audio Quality (BAQ) of each condition.
-    //   <br />
-    //   Basic Audio Quality is a single and global attribute that is used to judge
-    //   any and all detected differences between the reference and the condition.
-    // </div>
-    <></>
-    // </Callout>
+    <p className="font-semibold px-8 text-center tracking-tight text-slate-900 dark:text-slate-100 text-xl">
+      {text}
+      {/* Gesture Generation is the process of generating gestures from speech or text. The goal of Gesture Generation is to generate gestures that are natural, realistic, and appropriate for the given context. The generated gestures can be used to animate virtual characters, robots, or embodied conversational agents. */}
+    </p>
   )
 }

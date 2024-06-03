@@ -14,6 +14,7 @@ export function ScreenMain({ currentPage }) {
   const video2URL =
     page.type == "video" ? page.stimuli[1].url : "/gesture_video.mp4"
   const { addAction } = useActionRecorder()
+  console.log(page)
 
   // Play
   const playLeft = () => {
@@ -42,8 +43,10 @@ export function ScreenMain({ currentPage }) {
 
   return (
     <>
-      <div className="w-full h-full overflow-hidden">
+      <div className="w-full h-full flex flex-col gap-2 overflow-hidden">
+        <ScreenMessage text={page.question} />
         <div className="w-full h-full flex justify-center align-middle gap-2 ">
+
           <div className="flex-1 h-full">
             <div className="h-full w-full relative flex items-center justify-center">
               <video
@@ -87,7 +90,7 @@ export function ScreenMain({ currentPage }) {
         </div>
       </div>
       <EvaluationBoard />
-      <ScreenMessage />
+      {/* <ScreenMessage /> */}
     </>
   )
 }

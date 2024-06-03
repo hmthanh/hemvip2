@@ -1,5 +1,5 @@
 {
-    "testname": "Gesture Generation Experiment",
+    "testname": "Pairwise Comparison of Gesture Generation AI Model Studies",
     "stopOnErrors": true,
     "remoteService": "/save",
     "pages": [

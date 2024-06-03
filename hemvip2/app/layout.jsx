@@ -2,9 +2,9 @@ import "./globals.css"
 import "../styles/custom.css"
 
 export const metadata = {
-  title: "HEMVIP2 - Parallel Comparison of Gesture Generation AI Model Studies",
+  title: "HEMVIP2 - Pairwise Comparison of Gesture Generation AI Model Studies",
   description:
-    "Parallel Comparison of Gesture Generation AI Model Studies",
+    "Pairwise Comparison of Gesture Generation AI Model Studies",
 }
 
 export default function RootLayout({ children }) {

@@ -12,6 +12,9 @@ export const DEFAULT_OPTION = {
 }
 
 export const DEFAULT_ACTION_STRING = {
+  clickStart: "Click Start",
+  clickFinish: "Click Finish",
+
   clickLeft: "Click Left Better",
   clickEqual: "Click Equal",
   clickRight: "Click Right Better",

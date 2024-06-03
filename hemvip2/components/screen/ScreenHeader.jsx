@@ -23,6 +23,11 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
     setNext()
     addAction(DEFAULT_ACTION_STRING.clickNext)
   }
+
+  const startPage = () => {
+    setNext()
+    addAction(DEFAULT_ACTION_STRING.clickStart)
+  }
   return (
     // <h3 className="ui-bar ui-bar-a ui-corner-all" id="page_header" style={{ borderRadius: "all" }}>
     //     MUSHRA - Random 2
@@ -47,17 +52,17 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
       </h3>
 
       {isEndPage ? (
-        <button
+        <div></div>
+      ) : (
+        isStartPage ? (<button
           data-role="button"
           data-inline="true"
-          className="py-2 m-1 px-7 text-center text-white bg-green-600 rounded-xl text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
-          onClick={finishPage}
+          className="py-2 m-1 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
+          onClick={startPage}
         >
-          Finish
+          Start
           <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
-        </button>
-      ) : (
-        <button
+        </button>) : (<button
           data-role="button"
           data-inline="true"
           className="py-2 m-1 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
@@ -65,7 +70,8 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
         >
           Next
           <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
-        </button>
+        </button>)
+
       )}
     </div>
   )

@@ -6,8 +6,8 @@
         {
             "type": "generic",
             "id": "first_page",
-            "name": "Startup guide to participate gesture generation study",
-            "content": "Startup guide to participate gesture generation study"
+            "name": "Name of the first page, used as heading on the page.",
+            "content": "Content of the page, usage of HTML tags allowed."
         },
         {
             "type": "video",

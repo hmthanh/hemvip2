@@ -45,8 +45,8 @@
         },
         {
             "type": "finish",
-            "name": "Thank you",
-            "content": "Thank You!",
+            "name": "Finish",
+            "content": "Finish!",
             "showResults": false,
             "writeResults": true,
             "questionnaire": [

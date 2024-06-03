@@ -1,3 +1,4 @@
+import Image from "next/image"
 import React from "react"
 
 export default function StartupScreen() {
@@ -20,25 +21,25 @@ export default function StartupScreen() {
       Start our study by click <code className="nextra-code" dir="ltr">Start</code>
     </p>
     <div className="-mb-4 mt-3 flex justify-center overflow-hidden rounded-xl  bg-zinc-100">
-      <img alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
+      <Image alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
     </div>
     <p className="mt-6 leading-6 first:mt-0">
       Please choose <code className="nextra-code" dir="ltr">Next</code>
     </p>
     <div className="-mb-4 mt-3 flex justify-center overflow-hidden rounded-xl  bg-zinc-100">
-      <img alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
+      <Image alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
     </div>
     <div className="-mb-4 mt-3 flex justify-center overflow-hidden rounded-xl  bg-zinc-100">
-      <img alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
+      <Image alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
     </div>
     <div className="-mb-4 mt-3 flex justify-center overflow-hidden rounded-xl  bg-zinc-100">
-      <img alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
+      <Image alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
     </div>
     <div className="-mb-4 mt-3 flex justify-center overflow-hidden rounded-xl  bg-zinc-100">
-      <img alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
+      <Image alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
     </div>
     <div className="-mb-4 mt-3 flex justify-center overflow-hidden rounded-xl  bg-zinc-100">
-      <img alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
+      <Image alt="Title suffix" loading="lazy" decoding="async" data-nimg="1" className="w-[60%] select-none bg-white ring-1 ring-gray-200" src="/screen_sample.png" />
     </div>
   </div>
 }

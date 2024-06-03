@@ -11,8 +11,7 @@ import { ScreenControlProvider } from "@/contexts/screencontroll"
 import { ActionRecorderProvider } from "@/contexts/action-recorder"
 import PreventRefreshPage from "@/components/PreventRefreshPage"
 
-export default async function Page({ params, searchParams }) {
-  const { experimentid } = params
+export default async function Page({ searchParams }) {
   const { PROLIFIC_PID, STUDY_ID, SESSION_ID } = searchParams
   // console.log(experimentid, PROLIFIC_PID, STUDY_ID, SESSION_ID)
   const url = ""

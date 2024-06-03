@@ -8,7 +8,7 @@ import axios from "axios"
 // import Session from "@/webmushra/datamodel/Session"
 // import PageTemplateRenderer from "@/webmushra/business/PageTemplateRenderer"
 // import { addPagesToPageManager } from "./page-manager"
-import dataConfig from "../../../experiment/1234567/config.json"
+import dataConfig from "../../experiment/1234567/config.json"
 export async function fetchJSONStudy(url) {
   // const data = await axios.get("https://raw.githubusercontent.com/hmthanh/GENEA/main/public/my_first_experiment/1234567.json")
   // const config = data.data;

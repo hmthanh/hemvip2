@@ -1,13 +1,13 @@
 {
-    "testname": "Gesture Generation Experiment",
+    "testname": "Pairwise Comparison of Gesture Generation AI Model Studies",
     "stopOnErrors": true,
     "remoteService": "/save",
     "pages": [
         {
             "type": "generic",
             "id": "first_page",
-            "name": "Name of the first page, used as heading on the page.",
-            "content": "Content of the page, usage of HTML tags allowed."
+            "name": "Startup guide to participate gesture generation study",
+            "content": "Startup guide to participate gesture generation study"
         },
         {
             "type": "video",
@@ -45,8 +45,8 @@
         },
         {
             "type": "finish",
-            "name": "Thank you",
-            "content": "Thank You!",
+            "name": "Finish",
+            "content": "Finish!",
             "showResults": false,
             "writeResults": true,
             "questionnaire": [

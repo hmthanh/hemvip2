@@ -1,6 +1,5 @@
 "use client"
 
-import { generateSessionId } from "@/utils/utils"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -8,6 +7,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import Loading from "@/components/loading/loading"
+import { Callout } from "@/components/core"
 
 const schema = z.object({
   prolificid: z
@@ -25,22 +25,9 @@ export default function Home({ searchParams }) {
   const { PROLIFIC_PID, STUDY_ID, SESSION_ID } = searchParams
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const isError = !PROLIFIC_PID || !STUDY_ID || !SESSION_ID
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   console.log("object")
-  //   const sessionId = generateSessionId()
-  //   router.push(
-  //     `/prolific?PROLIFIC_PID=${prolific}&STUDY_ID=${study}&SESSION_ID=${sessionId}`
-  //   )
-  //   // handleSubmit
-  // }
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
       prolificid: PROLIFIC_PID || "",
@@ -70,76 +57,93 @@ export default function Home({ searchParams }) {
                     Pairwise Comparison of Gesture Generation AI Model Studies
                   </h1>
                   <p className="mt-3 leading-6 first:mt-0">
-                    Enter PROLIFIC_PID, STUDY_ID and click to start
+                    Click <strong>Start</strong> button to begin study.
                   </p>
+
+                  <p className="mt-3 leading-6 first:mt-0">
+                    Please read Startup guide before Start
+                  </p>
+
                   <form
-                    className="flex flex-row gap-4 px-4 py-8 justify-center items-end"
                     onSubmit={handleSubmit(handleStart)}
+                    className="flex flex-col py-8 "
                   >
-                    <div className="flex-1">
-                      <label
-                        htmlFor="prolificid"
-                        className="block text-xs text-gray-600 uppercase"
-                      >
-                        PROLIFIC_PID
-                      </label>
-                      <input
-                        {...register("prolificid")}
-                        id="prolificid"
-                        disabled={true}
-                        placeholder="662b614c61935111d01484bf"
-                        required=""
-                        className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
-                        type="text"
-                        name="prolificid"
-                      />
+                    <div className="flex flex-row gap-4 px-4 justify-center items-end">
+                      <div className="flex-1">
+                        <label
+                          htmlFor="prolificid"
+                          className="block text-xs text-gray-600 uppercase"
+                        >
+                          PROLIFIC_PID
+                        </label>
+                        <input
+                          {...register("prolificid")}
+                          id="prolificid"
+                          disabled={true}
+                          placeholder=""
+                          required=""
+                          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-g-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+                          type="text"
+                          name="prolificid"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <label
+                          htmlFor="studyid"
+                          className="block text-xs text-gray-600 uppercase"
+                        >
+                          STUDY_ID
+                        </label>
+                        <input
+                          id="studyid"
+                          {...register("studyid")}
+                          placeholder=""
+                          required=""
+                          disabled={true}
+                          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-g-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+                          type="text"
+                          name="studyid"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <label
+                          htmlFor="sessionid"
+                          className="block text-xs text-gray-600 uppercase"
+                        >
+                          SESSION_ID
+                        </label>
+                        <input
+                          id="sessionid"
+                          {...register("sessionid")}
+                          placeholder=""
+                          required=""
+                          disabled={true}
+                          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-g-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+                          type="text"
+                          name="sessionid"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <button
+                          type="submit"
+                          className="flex h-10 w-full font-bold text-white bg-blue-500 items-center justify-center rounded-md border text-sm transition-all focus:outline-none"
+                        >
+                          {loading ? <Loading color="#fff" /> : "Start"}
+                        </button>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <label
-                        htmlFor="studyid"
-                        className="block text-xs text-gray-600 uppercase"
-                      >
-                        STUDY_ID
-                      </label>
-                      <input
-                        id="studyid"
-                        {...register("studyid")}
-                        placeholder="665971ec91884faf5b5284d7"
-                        required=""
-                        disabled={true}
-                        className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
-                        type="text"
-                        name="studyid"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <label
-                        htmlFor="sessionid"
-                        className="block text-xs text-gray-600 uppercase"
-                      >
-                        SESSION_ID
-                      </label>
-                      <input
-                        id="sessionid"
-                        {...register("sessionid")}
-                        placeholder="03mr59tj5bmv"
-                        required=""
-                        disabled={true}
-                        className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
-                        type="text"
-                        name="sessionid"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <button
-                        type="submit"
-                        className="flex h-10 w-full font-bold text-white bg-blue-500 items-center justify-center rounded-md border text-sm transition-all focus:outline-none"
-                      >
-                        {loading ? <Loading color="#fff" /> : "Start"}
-                      </button>
-                    </div>
+                    {isError ? (
+                      <Callout type="error">
+                        Please visit{" "}
+                        <a href="https://www.prolific.com/">Prolific</a> to get
+                        link PROLIFIC_PID, STUDY_ID, SESSION_ID
+                      </Callout>
+                    ) : (
+                      <></>
+                    )}
                   </form>
 
+                  <hr className="dark:border-neutral-800" />
                   <h2 className="font-semibold tracking-tight text-slate-900 dark:text-slate-100 mt-3 text-2xl">
                     Startup guide
                   </h2>
@@ -171,7 +175,6 @@ export default function Home({ searchParams }) {
                       Start
                     </code>
                   </p>
-
                   <p className="mt-6 leading-6 first:mt-0">
                     Please choose{" "}
                     <code className="nextra-code" dir="ltr">

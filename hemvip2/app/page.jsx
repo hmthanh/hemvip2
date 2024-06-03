@@ -21,7 +21,7 @@ export default function Home() {
               <div className=" w-full h-full overflow-hidden flex flex-col gap-2 justify-center align-middle" >
 
                 <div className="px-8 overflow-y-auto">
-                  <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Gesture Generation</h1>
+                  <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Parallel Comparison of Gesture Generation AI Model Studies</h1>
                   <p className="mt-3 leading-6 first:mt-0">Enter PROLIFIC_PID, STUDY_ID and click to start</p>
                   <div className="flex flex-row gap-4 px-4 py-8 justify-center items-end">
                     <div className="flex-1">

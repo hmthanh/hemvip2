@@ -1,4 +1,6 @@
-import { UserSchema } from "@/types"
+"use server"
+
+import { studySchema } from "@/types/schema"
 import { NextResponse } from "next/server"
 
 export async function POST(request) {
@@ -6,11 +8,11 @@ export async function POST(request) {
   const body = await request.json()
 
   // Use Zod to validate the received data against the UserSchema
-  const result = UserSchema.safeParse(body)
+  const result = studySchema.safeParse(body)
 
   // Check if the validation is successful
   if (result.success) {
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ errors: null, success: true })
   }
 
   // If validation errors, map them into an object
@@ -19,5 +21,5 @@ export async function POST(request) {
   )
 
   // Respond with a JSON object containing the validation errors
-  return NextResponse.json({ errors: serverErrors })
+  return NextResponse.json({ errors: serverErrors, success: false })
 }

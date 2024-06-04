@@ -8,18 +8,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import Loading from "@/components/loading/loading"
 import { Callout } from "@/components/core"
-
-const schema = z.object({
-  prolificid: z
-    .string()
-    .regex(/^[a-f0-9]{24}$/, { message: "Invalid PROLIFIC_PID format" }),
-  studyid: z
-    .string()
-    .regex(/^[a-f0-9]{24}$/, { message: "Invalid STUDY_ID format" }),
-  sessionid: z
-    .string()
-    .regex(/^[a-z0-9]{12}$/, { message: "Invalid SESSION_ID format" }),
-})
+import axios from "axios"
+import { studySchema } from "@/types/schema"
 
 export default function Home({ searchParams }) {
   const { PROLIFIC_PID, STUDY_ID, SESSION_ID } = searchParams
@@ -28,7 +18,7 @@ export default function Home({ searchParams }) {
   const isError = !PROLIFIC_PID || !STUDY_ID || !SESSION_ID
 
   const { register, handleSubmit } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(studySchema),
     defaultValues: {
       prolificid: PROLIFIC_PID || "",
       studyid: STUDY_ID || "",
@@ -36,11 +26,17 @@ export default function Home({ searchParams }) {
     },
   })
 
-  const handleStart = (data) => {
+  const handleStart = async (data) => {
     setLoading(true)
-    router.push(
-      `/prolific?PROLIFIC_PID=${data.prolific}&STUDY_ID=${data.studyid}&SESSION_ID=${data.sessionid}`
-    )
+    const response = await axios.post("/api/study", data)
+    const { success } = response.data
+    if (success) {
+      router.push(
+        `/prolific?PROLIFIC_PID=${data.prolific}&STUDY_ID=${data.studyid}&SESSION_ID=${data.sessionid}`
+      )
+    } else {
+    }
+
     setLoading(false)
     // console.log(data, data.prolificid, data.studyid, data.sessionid)
   }
@@ -125,8 +121,9 @@ export default function Home({ searchParams }) {
                       </div>
                       <div className="flex-1">
                         <button
+                          disabled={isError}
                           type="submit"
-                          className="flex h-10 w-full font-bold text-white bg-blue-500 items-center justify-center rounded-md border text-sm transition-all focus:outline-none"
+                          className="flex h-10 w-full font-bold text-white bg-blue-500 items-center justify-center rounded-md border text-sm transition-all focus:outline-none disabled:bg-blue-200 disabled:border-blue-200"
                         >
                           {loading ? <Loading color="#fff" /> : "Start"}
                         </button>
@@ -135,8 +132,13 @@ export default function Home({ searchParams }) {
                     {isError ? (
                       <Callout type="error">
                         Please visit{" "}
-                        <a href="https://www.prolific.com/">Prolific</a> to get
-                        link PROLIFIC_PID, STUDY_ID, SESSION_ID
+                        <a
+                          className="text-primary-600 underline decoration-from-font [text-underline-position:from-font]"
+                          href="https://www.prolific.com/"
+                        >
+                          Prolific
+                        </a>{" "}
+                        to get link PROLIFIC_PID, STUDY_ID, SESSION_ID
                       </Callout>
                     ) : (
                       <></>
@@ -187,9 +189,6 @@ export default function Home({ searchParams }) {
           </div>
         </div>
       </div>
-      <a href="/prolific/my_first_experiment?PROLIFIC_PID=1234567&STUDY_ID=1234567&SESSION_ID=123123">
-        Go
-      </a>
     </main>
   )
 }

@@ -9,5 +9,5 @@ export const studySchema = z.object({
     .regex(/^[a-f0-9]{24}$/, { message: "Invalid STUDY_ID format" }),
   sessionid: z
     .string()
-    .regex(/^[a-z0-9]{12}$/, { message: "Invalid SESSION_ID format" }),
+    .regex(/^[a-zA-Z0-9]+$/, { message: "Invalid SESSION_ID format" }),
 })

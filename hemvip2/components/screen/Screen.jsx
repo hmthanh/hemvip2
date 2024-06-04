@@ -18,6 +18,21 @@ export function Screen() {
     useScreenControl()
 
   const [overlay, setOverlay] = useState(false)
+  // useEffect(() => {
+  //   const handleKeyDown = (event) => {
+  //     console.log(event.key)
+  //     if (event.key === "ArrowLeft") {
+  //       setPrev()
+  //     } else if (event.key === "ArrowRight") {
+  //       setNext()
+  //     }
+  //   }
+  //   window.addEventListener("keydown", handleKeyDown)
+
+  //   return () => {
+  //     window.removeEventListener("keydown", handleKeyDown)
+  //   }
+  // }, [setPrev, setNext])
 
   if (!config) {
     return <></>

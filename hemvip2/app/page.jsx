@@ -29,7 +29,6 @@ export default function Home({ searchParams }) {
   const [isError, setIsError] = useState(
     !PROLIFIC_PID || !STUDY_ID || !SESSION_ID
   )
-  // const isError = !PROLIFIC_PID || !STUDY_ID || !SESSION_ID
 
   const {
     register,
@@ -53,7 +52,7 @@ export default function Home({ searchParams }) {
       const { success } = response.data
       if (success) {
         await router.push(
-          `/prolific?PROLIFIC_PID=${data.prolific}&STUDY_ID=${data.studyid}&SESSION_ID=${data.sessionid}`
+          `/prolific?PROLIFIC_PID=${data.prolificid}&STUDY_ID=${data.studyid}&SESSION_ID=${data.sessionid}`
         )
       } else {
         const { errors } = response.data
@@ -76,6 +75,7 @@ export default function Home({ searchParams }) {
     } catch (error) {
       alert("Submitting form failed!")
       setError(true)
+      setIsError(true)
     }
 
     setLoading(false)
@@ -83,6 +83,7 @@ export default function Home({ searchParams }) {
 
   return (
     <main className="flex w-full flex-col items-center justify-between p-2 md:px-24">
+      {loading && <LoadingSpin />}
       <div className="w-full px-[7%] gap-2 py-2 flex flex-col bg-stone-50">
         <div className="flex flex-col w-full h-full gap-2">
           <div className="flex-grow w-full h-full bg-white px-0 py-2 sm:p-4 border-none rounded-xl sm:border sm:border-zinc-300 flex flex-col gap-4">

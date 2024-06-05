@@ -11,6 +11,7 @@ import { useExperimentConfig } from "@/contexts/experiment"
 import { useScreenControl } from "@/contexts/screencontroll"
 import StartupScreen from "./StartupScreen"
 import FinishScreen from "./FinishScreen"
+import useDebouncedCallback from "@/utils/hooks/use-bounded-callback"
 
 export function Screen() {
   const config = useExperimentConfig()
@@ -18,21 +19,35 @@ export function Screen() {
     useScreenControl()
 
   const [overlay, setOverlay] = useState(false)
-  // useEffect(() => {
-  //   const handleKeyDown = (event) => {
-  //     console.log(event.key)
-  //     if (event.key === "ArrowLeft") {
-  //       setPrev()
-  //     } else if (event.key === "ArrowRight") {
-  //       setNext()
-  //     }
-  //   }
-  //   window.addEventListener("keydown", handleKeyDown)
+  const debouncedPrevPage = useDebouncedCallback(setPrev, 500, {
+    leading: true,
+  })
+  const debouncedNextPage = useDebouncedCallback(setNext, 500, {
+    leading: true,
+  })
 
-  //   return () => {
-  //     window.removeEventListener("keydown", handleKeyDown)
-  //   }
-  // }, [setPrev, setNext])
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      console.log(event.key)
+      if (event.key === "ArrowLeft") {
+        if (!isStartPage) {
+          // setTimeout(() => {
+          //   setPrev()
+          // }, 500)
+          debouncedPrevPage()
+        }
+      } else if (event.key === "ArrowRight") {
+        if (!isEndPage) {
+          debouncedNextPage()
+        }
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown)
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [setPrev, setNext])
 
   if (!config) {
     return <></>

@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import Loading from "@/components/loading/loading"
 import { Callout } from "@/components/core"
 import LoadingSpin from "@/components/loading/LoadingSpin"
+import { startStudy } from "./actions"
 
 const studySchema = z.object({
   prolificid: z
@@ -26,6 +27,7 @@ export default function Home({ searchParams }) {
   const { PROLIFIC_PID, STUDY_ID, SESSION_ID } = searchParams
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const [isComplete, setIsComplete] = useState(false)
   const [isError, setIsError] = useState(
     !PROLIFIC_PID || !STUDY_ID || !SESSION_ID
   )
@@ -47,35 +49,43 @@ export default function Home({ searchParams }) {
   const handleStart = async (data) => {
     setLoading(true)
     try {
-      const response = await axios.post("/api/study", data)
-      console.log(response)
-      const { success } = response.data
-      if (success) {
-        await router.push(
-          `/prolific?PROLIFIC_PID=${data.prolificid}&STUDY_ID=${data.studyid}&SESSION_ID=${data.sessionid}`
-        )
-      } else {
-        const { errors } = response.data
-        const fieldErrorMapping = {
-          prolificid: "prolificid",
-          studyid: "studyid",
-          sessionid: "sessionid",
-        }
-        const fieldWithError = Object.keys(fieldErrorMapping).find(
-          (field) => errors[field]
-        )
-        if (fieldWithError) {
-          // Use the ValidFieldNames type to ensure the correct field names
-          setError(fieldErrorMapping[fieldWithError], {
-            type: "server",
-            message: errors[fieldWithError],
-          })
-        }
-      }
+      // const response = await axios.post("/api/study", data)
+      // console.log(response)
+      // const { success } = response.data
+      const res = await startStudy({
+        prolificid: data.prolificid,
+        studyid: data.studyid,
+        sessionid: data.sessionid,
+      })
+      console.log(res)
+      // if (success) {
+
+      //   // await router.push(
+      //   //   `/prolific?PROLIFIC_PID=${data.prolificid}&STUDY_ID=${data.studyid}&SESSION_ID=${data.sessionid}`
+      //   // )
+      // } else {
+      //   const { errors } = response.data
+      //   const fieldErrorMapping = {
+      //     prolificid: "prolificid",
+      //     studyid: "studyid",
+      //     sessionid: "sessionid",
+      //   }
+      //   const fieldWithError = Object.keys(fieldErrorMapping).find(
+      //     (field) => errors[field]
+      //   )
+      //   if (fieldWithError) {
+      //     // Use the ValidFieldNames type to ensure the correct field names
+      //     setError(fieldErrorMapping[fieldWithError], {
+      //       type: "server",
+      //       message: errors[fieldWithError],
+      //     })
+      //   }
+      // }
     } catch (error) {
       alert("Submitting form failed!")
       setError(true)
       setIsError(true)
+      setLoading(false)
     }
 
     setLoading(false)
@@ -193,9 +203,8 @@ export default function Home({ searchParams }) {
                         </button>
                       </div>
                     </div>
-
-                    <div className="px-4">
-                      {isError && (
+                    {isError && (
+                      <div className="px-4">
                         <Callout type="error">
                           Please visit{" "}
                           <a
@@ -206,8 +215,14 @@ export default function Home({ searchParams }) {
                           </a>{" "}
                           to get link PROLIFIC_PID, STUDY_ID, SESSION_ID
                         </Callout>
-                      )}
-                    </div>
+                      </div>
+                    )}
+
+                    {isComplete && (
+                      <div className="px-4">
+                        <Callout type="info">All study is complete</Callout>
+                      </div>
+                    )}
                   </form>
 
                   <hr className="dark:border-neutral-800" />

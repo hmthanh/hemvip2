@@ -19,7 +19,7 @@ async function start() {
     console.error(e)
     return new Response(JSON.stringify({ message: "Internal Server Error" }), {
       status: 500,
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "sapplication/json" },
     })
   }
 }

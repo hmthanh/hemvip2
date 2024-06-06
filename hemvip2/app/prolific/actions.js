@@ -9,6 +9,8 @@ import axios from "axios"
 // import PageTemplateRenderer from "@/webmushra/business/PageTemplateRenderer"
 // import { addPagesToPageManager } from "./page-manager"
 import dataConfig from "../../experiment/1234567/config.json"
+import clientPromise from "@/server/mongodb"
+
 export async function fetchJSONStudy(url) {
   // const data = await axios.get("https://raw.githubusercontent.com/hmthanh/GENEA/main/public/my_first_experiment/1234567.json")
   // const config = data.data;
@@ -67,6 +69,24 @@ export async function fetchJSONStudy(url) {
   //   errorHandler,
   //   dataSender
   // )
+
+  try {
+    const client = await clientPromise
+    const db = client.db("HemVip")
+
+    const studies = await db.collection("studies").find({}).toArray()
+
+    return new Response(JSON.stringify(studies), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    })
+  } catch (e) {
+    console.error(e)
+    return new Response(JSON.stringify({ message: "Internal Server Error" }), {
+      status: 500,
+      headers: { "Content-Type": "sapplication/json" },
+    })
+  }
 
   const config = dataConfig
   // callbackFilesLoaded(pageManager, pageTemplateRenderer, config, errorHandler)

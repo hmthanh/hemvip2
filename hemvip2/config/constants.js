@@ -34,143 +34,200 @@ export const DEFAULT_ACTION_STRING = {
 }
 
 export const DEFAULT_SCREEN_CONFIG = {
-  testname: "Gesture Generation Experiment",
-  stopOnErrors: true,
-  remoteService: "/save",
+  _id: {
+    $oid: "66614ba1b4d88f207832a4d1",
+  },
+  status: "started",
+  name: "Pairwise Comparison of Gesture Generation AI Model Studies",
+  prolific_userid: "662b614c61935111d01484bf",
+  prolific_studyid: "665971ec91884faf5b5284d7",
+  prolific_sessionid: "03mr59tj5bmv",
+  completion_code: "CMTN9LUK",
+  total_actions: [
+    "Click Play",
+    "Click Pause",
+    "Click Left Better",
+    "Click Right Better",
+  ],
   pages: [
     {
+      pageid: "3242342",
       type: "generic",
-      id: "first_page",
-      name: "Name of the first page, used as heading on the page.",
-      content: "Content of the page, usage of HTML tags allowed.",
+      name: "Startup guide to participate gesture generation study",
+      content: "",
+      selected: {
+        value: 0,
+        label: "",
+      },
+      actions: ["Click Start"],
     },
     {
+      pageid: "3242342",
       type: "video",
-      id: "subject_x",
       name: "Page 1 of Y",
-      content: "Rate the videos shown below",
-      question: "How human-like was the agent in this video?",
-      stimuli: [
+      content: "How human-like was the agent in this video?",
+      selected: {
+        value: 9,
+        label: "Right better",
+      },
+      actions: [
+        "Click Play",
+        "Click Pause",
+        "Click Left Better",
+        "Click Right Better",
+      ],
+      videos: [
         {
-          id: "C1",
+          teamid: "123123",
+          inputid: "56567342159353489347",
+          value: 4,
           url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
         },
         {
-          id: "C2",
+          teamid: "645634",
+          inputid: "56567342159353489347",
+          value: 9,
           url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
         },
       ],
     },
     {
+      pageid: "3242342",
       type: "video",
-      id: "subject_x",
-      name: "Page 2 of Y",
-      content: "Which from the two videos is the best?",
-      question: "Which from the two videos is the best",
-      stimuli: [
+      name: "Page 1 of Y",
+      content: "How human-like was the agent in this video?",
+      selected: {
+        value: 9,
+        label: "Right better",
+      },
+      actions: [
+        "Click Play",
+        "Click Pause",
+        "Click Left Better",
+        "Click Right Better",
+      ],
+      videos: [
         {
-          id: "C1",
+          teamid: "123123",
+          inputid: "56567342159353489347",
+          value: 4,
           url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
         },
         {
-          id: "C2",
+          teamid: "645634",
+          inputid: "56567342159353489347",
+          value: 9,
           url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
         },
       ],
     },
     {
-      type: "finish",
-      name: "Thank you",
-      content: "Thank You!",
-      showResults: false,
-      writeResults: true,
-      questionnaire: [
+      pageid: "3242342",
+      type: "video",
+      name: "Page 1 of Y",
+      content: "How human-like was the agent in this video?",
+      selected: {
+        value: 9,
+        label: "Right better",
+      },
+      actions: [
+        "Click Play",
+        "Click Pause",
+        "Click Left Better",
+        "Click Right Better",
+      ],
+      videos: [
         {
-          type: "number",
-          label: "*What's your age in years?",
-          name: "age",
-          min: 0,
-          max: 100,
-          default: 0,
+          teamid: "123123",
+          inputid: "56567342159353489347",
+          value: 4,
+          url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
         },
         {
-          type: "options",
-          name: "gender",
-          label: "*How would you identify yourself (gender)?",
-          response: [
-            {
-              value: "female",
-              label: "Female",
-            },
-            {
-              value: "male",
-              label: "Male",
-            },
-            {
-              value: "other",
-              label: "Other",
-            },
-          ],
-        },
-        {
-          type: "text",
-          label: "*What's your nationality?",
-          name: "nationality",
-        },
-        {
-          type: "likert",
-          label: "How skilled are you with computers?",
-          name: "video_games",
-          response: [
-            {
-              value: "1",
-              label: "1 - Not at all",
-            },
-            {
-              value: "2",
-              label: "2",
-            },
-            {
-              value: "3",
-              label: "3",
-            },
-            {
-              value: "4",
-              label: "4 - Moderately",
-            },
-            {
-              value: "5",
-              label: "5",
-            },
-            {
-              value: "6",
-              label: "6",
-            },
-            {
-              value: "7",
-              label: "7 - Extremely",
-            },
-          ],
-        },
-        {
-          type: "long_text",
-          label:
-            "How do you feel today about yourself and the state of the world?",
-          name: "feeling",
+          teamid: "645634",
+          inputid: "56567342159353489347",
+          value: 9,
+          url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
         },
       ],
-      remoteFailService: "/fail",
+    },
+    {
+      pageid: "3242342",
+      type: "video",
+      name: "Page 1 of Y",
+      content: "How human-like was the agent in this video?",
+      selected: {
+        value: 9,
+        label: "Right better",
+      },
+      actions: [
+        "Click Play",
+        "Click Pause",
+        "Click Left Better",
+        "Click Right Better",
+      ],
+      videos: [
+        {
+          teamid: "123123",
+          inputid: "56567342159353489347",
+          value: 4,
+          url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+        },
+        {
+          teamid: "645634",
+          inputid: "56567342159353489347",
+          value: 9,
+          url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+        },
+      ],
+    },
+    {
+      pageid: "3242342",
+      type: "video",
+      name: "Page 1 of Y",
+      content: "How human-like was the agent in this video?",
+      selected: {
+        value: 9,
+        label: "Right better",
+      },
+      actions: [
+        "Click Play",
+        "Click Pause",
+        "Click Left Better",
+        "Click Right Better",
+      ],
+      videos: [
+        {
+          teamid: "123123",
+          inputid: "56567342159353489347",
+          value: 4,
+          url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+        },
+        {
+          teamid: "645634",
+          inputid: "56567342159353489347",
+          value: 9,
+          url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+        },
+      ],
+    },
+    {
+      pageid: "3242342",
+      type: "finish",
+      name: "Finish page",
+      content: "",
+      selected: {
+        value: 0,
+        label: "",
+      },
+      actions: ["Click Finish"],
     },
   ],
 }
 
 export const DEEP_OBJECT_KEYS = Object.entries(DEFAULT_SCREEN_CONFIG)
   .map(([key, value]) => {
-    const isObject =
-      value &&
-      typeof value === "object" &&
-      !Array.isArray(value) &&
-      !isValidElement(value)
+    const isObject = value && typeof value === "object" && !Array.isArray(value)
     if (isObject) {
       return key
     }

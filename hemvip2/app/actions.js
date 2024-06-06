@@ -16,8 +16,6 @@ const studySchema = z.object({
 })
 
 export async function startStudy({ prolificid, studyid, sessionid }) {
-  // Parse input
-  let serverErrors
   try {
     // Use Zod to validate the received data against the UserSchema
     const result = studySchema.safeParse({ prolificid, studyid, sessionid })
@@ -28,9 +26,7 @@ export async function startStudy({ prolificid, studyid, sessionid }) {
       const client = await clientPromise
       const db = client.db("HemVip")
 
-      const studies = await db.collection("studies").find({}).toArray()
-
-      const filter = { status: "new" }
+      const filter = { status: { $in: ["new", "uncomplete"] } }
 
       const updateDoc = {
         $set: {
@@ -53,20 +49,20 @@ export async function startStudy({ prolificid, studyid, sessionid }) {
       } else {
         return {
           errors: null,
-          success: false,
+          success: true,
           data: null,
           msg: "All study is complete",
         }
       }
     } else {
       // If validation errors, map them into an object
-      serverErrors = Object.fromEntries(
+      let serverErrors = Object.fromEntries(
         result.error?.issues?.map((issue) => [issue.path[0], issue.message]) ||
           []
       )
       return {
         errors: serverErrors,
-        success: true,
+        success: false,
         data: null,
         msg: "Failed to parse proflificid, studyid, sessionid",
       }

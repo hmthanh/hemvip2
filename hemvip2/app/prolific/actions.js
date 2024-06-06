@@ -10,85 +10,75 @@ import axios from "axios"
 // import { addPagesToPageManager } from "./page-manager"
 import dataConfig from "../../experiment/1234567/config.json"
 import clientPromise from "@/server/mongodb"
+import { z } from "zod"
 
-export async function fetchJSONStudy(url) {
-  // const data = await axios.get("https://raw.githubusercontent.com/hmthanh/GENEA/main/public/my_first_experiment/1234567.json")
-  // const config = data.data;
-  // console.log("data", data)
-  // const data = dataConfig;
-  // const config = {}
-  // const config = dataConfig
-  // // console.log(data)
+const studySchema = z.object({
+  prolificid: z
+    .string()
+    .regex(/^[a-f0-9]{24}$/, { message: "Invalid PROLIFIC_PID format" }),
+  studyid: z
+    .string()
+    .regex(/^[a-f0-9]{24}$/, { message: "Invalid STUDY_ID format" }),
+  sessionid: z
+    .string()
+    .regex(/^[a-zA-Z0-9]+$/, { message: "Invalid SESSION_ID format" }),
+})
 
-  // let errorHandler = new ErrorHandler()
-  // let pageManager = null
-  // let localizer = new Localizer()
-  // let dataSender = null
-  // let session = null
-  // let pageTemplateRenderer = null
-  // let interval2 = null
+export async function fetchStudy({ prolificid, studyid, sessionid }) {
+  const result = studySchema.safeParse({ prolificid, studyid, sessionid })
 
-  // if (config == null) {
-  //   errorHandler.sendError("URL couldn't be found!")
-  //   let errors = errorHandler.getErrors()
-  //   return { status: -1, error: errors, config }
-  // }
+  // Check if the validation is successful
+  if (result.success) {
+    try {
+      const client = await clientPromise
+      const db = client.db("HemVip")
 
-  // var nls = new Object()
-  // localizer.initializeNLSFragments(nls)
-  // pageManager = new PageManager("pageManager", "page_content", localizer)
+      const filter = {
+        status: "started",
+        prolific_userid: prolificid,
+        prolific_studyid: studyid,
+        prolific_sessionid: sessionid,
+      }
 
-  // dataSender = new DataSender(config)
+      const result = await db.collection("studies").findOne(filter)
+      // console.log("result", result)
 
-  // session = new Session()
-  // session.testId = config.testId
-  // session.userId = config.userId
-  // session.config = url
-
-  // if (config.language == undefined) {
-  //   config.language = "en"
-  // }
-
-  // pageTemplateRenderer = new PageTemplateRenderer(
-  //   pageManager,
-  //   config.showButtonPreviousPage,
-  //   config.language
-  // )
-
-  // pageManager.addCallbackPageEventChanged(
-  //   pageTemplateRenderer.refresh.bind(pageTemplateRenderer)
-  // )
-
-  // // console.log(config.pages)
-
-  // addPagesToPageManager(
-  //   pageManager,
-  //   config.pages,
-  //   session,
-  //   config,
-  //   errorHandler,
-  //   dataSender
-  // )
-
-  try {
-    const client = await clientPromise
-    const db = client.db("HemVip")
-
-    const studies = await db.collection("studies").find({}).toArray()
-
-    return new Response(JSON.stringify(studies), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    })
-  } catch (e) {
-    console.error(e)
-    return new Response(JSON.stringify({ message: "Internal Server Error" }), {
-      status: 500,
-      headers: { "Content-Type": "sapplication/json" },
-    })
+      if (result) {
+        delete result._id
+        // console.log(result)
+        return {
+          errors: null,
+          success: true,
+          data: result,
+          msg: "Success to start a study",
+        }
+      } else {
+        return {
+          errors: null,
+          success: true,
+          data: null,
+          msg: "All study is complete",
+        }
+      }
+    } catch (error) {
+      console.log(error)
+      return {
+        errors: error,
+        success: false,
+        data: null,
+        msg: "Internal server error",
+      }
+    }
+  } else {
+    // If validation errors, map them into an object
+    let serverErrors = Object.fromEntries(
+      result.error?.issues?.map((issue) => [issue.path[0], issue.message]) || []
+    )
+    return {
+      errors: serverErrors,
+      success: false,
+      data: null,
+      msg: "Failed to parse proflificid, studyid, sessionid",
+    }
   }
-
-  const config = dataConfig
-  // callbackFilesLoaded(pageManager, pageTemplateRenderer, config, errorHandler)
-  return { status: 1, error: null, config }
 }

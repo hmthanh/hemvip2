@@ -5,30 +5,37 @@ import { PopupError } from "@/components/screen"
 import { PopupDialog } from "@/components/screen"
 import { Screen } from "@/components/screen"
 import { NavScreen } from "@/components/screen"
-import { fetchJSONStudy } from "./actions"
+import { fetchStudy } from "./actions"
 import { ExperimentConfigProvider } from "@/contexts/experiment"
 import { ScreenControlProvider } from "@/contexts/screencontroll"
 import { ActionRecorderProvider } from "@/contexts/action-recorder"
 import PreventRefreshPage from "@/components/PreventRefreshPage"
+import { Callout } from "@/components/core"
 
 export default async function Page({ searchParams }) {
   const { PROLIFIC_PID, STUDY_ID, SESSION_ID } = searchParams
-  // console.log(experimentid, PROLIFIC_PID, STUDY_ID, SESSION_ID)
-  const url = ""
+  console.log(PROLIFIC_PID, STUDY_ID, SESSION_ID)
 
-  const { status, error, config } = await fetchJSONStudy(url)
+  const { errors, success, data, msg } = await fetchStudy({
+    prolificid: PROLIFIC_PID,
+    studyid: STUDY_ID,
+    sessionid: SESSION_ID,
+  })
 
-  // console.log('config', config)
+  // console.log("data", data)
+  if (!success) {
+    return (
+      <div className="w-full max-h-screen h-screen bg-gray-100 overflow-hidden">
+        <Callout type="error">sdfsdf</Callout>
+      </div>
+    )
+  }
 
   return (
     <>
-      {/* <div>{experimentid}</div>
-      <div>{PROLIFIC_PID}</div>
-      {STUDY_ID}
-      {SESSION_ID} */}
       <div className="w-full max-h-screen h-screen bg-gray-100 overflow-hidden">
-        <ExperimentConfigProvider value={config}>
-          <ScreenControlProvider min={0} max={config.pages.length - 1}>
+        <ExperimentConfigProvider value={data}>
+          <ScreenControlProvider min={0} max={data.pages.length - 1}>
             <ActionRecorderProvider>
               <Screen />
             </ActionRecorderProvider>

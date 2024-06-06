@@ -46,44 +46,51 @@ export default function Home({ searchParams }) {
     },
   })
 
-  const handleStart = async (data) => {
+  const handleStart = async (formData) => {
     setLoading(true)
+    setIsComplete(false)
     try {
       // const response = await axios.post("/api/study", data)
       // console.log(response)
       // const { success } = response.data
+
       const res = await startStudy({
-        prolificid: data.prolificid,
-        studyid: data.studyid,
-        sessionid: data.sessionid,
+        prolificid: formData.prolificid,
+        studyid: formData.studyid,
+        sessionid: formData.sessionid,
       })
       console.log(res)
-      // if (success) {
-
-      //   // await router.push(
-      //   //   `/prolific?PROLIFIC_PID=${data.prolificid}&STUDY_ID=${data.studyid}&SESSION_ID=${data.sessionid}`
-      //   // )
-      // } else {
-      //   const { errors } = response.data
-      //   const fieldErrorMapping = {
-      //     prolificid: "prolificid",
-      //     studyid: "studyid",
-      //     sessionid: "sessionid",
-      //   }
-      //   const fieldWithError = Object.keys(fieldErrorMapping).find(
-      //     (field) => errors[field]
-      //   )
-      //   if (fieldWithError) {
-      //     // Use the ValidFieldNames type to ensure the correct field names
-      //     setError(fieldErrorMapping[fieldWithError], {
-      //       type: "server",
-      //       message: errors[fieldWithError],
-      //     })
-      //   }
-      // }
+      const { success, data } = res
+      // console.log(res)
+      if (success) {
+        if (data) {
+          router.push(
+            `/prolific?PROLIFIC_PID=${data.prolificid}&STUDY_ID=${data.studyid}&SESSION_ID=${data.sessionid}`
+          )
+        } else {
+          setIsComplete(true)
+        }
+      } else {
+        const { errors } = response.data
+        const fieldErrorMapping = {
+          prolificid: "prolificid",
+          studyid: "studyid",
+          sessionid: "sessionid",
+        }
+        const fieldWithError = Object.keys(fieldErrorMapping).find(
+          (field) => errors[field]
+        )
+        if (fieldWithError) {
+          // Use the ValidFieldNames type to ensure the correct field names
+          setError(fieldErrorMapping[fieldWithError], {
+            type: "server",
+            message: errors[fieldWithError],
+          })
+        }
+      }
     } catch (error) {
-      alert("Submitting form failed!")
-      setError(true)
+      console.log(error)
+      alert("Submitting form failed!", error)
       setIsError(true)
       setLoading(false)
     }

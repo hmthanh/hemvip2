@@ -10,9 +10,9 @@ import { EvaluationBoard, ScreenMessage } from "."
 export function ScreenMain({ currentPage }) {
   const page = useCurrentPage(currentPage)
   const video1URL =
-    page.type == "video" ? page.stimuli[0].url : "/gesture_video.mp4"
+    page.type == "video" ? page.videos[0].url : "/gesture_video.mp4"
   const video2URL =
-    page.type == "video" ? page.stimuli[1].url : "/gesture_video.mp4"
+    page.type == "video" ? page.videos[1].url : "/gesture_video.mp4"
   const { addAction } = useActionRecorder()
   console.log(page)
 
@@ -46,7 +46,6 @@ export function ScreenMain({ currentPage }) {
       <div className="w-full h-full flex flex-col gap-2 overflow-hidden">
         <ScreenMessage text={page.question} />
         <div className="w-full h-full flex justify-center align-middle gap-2 ">
-
           <div className="flex-1 h-full">
             <div className="h-full w-full relative flex items-center justify-center">
               <video

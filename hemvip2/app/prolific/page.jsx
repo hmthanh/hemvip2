@@ -23,10 +23,25 @@ export default async function Page({ searchParams }) {
   })
 
   // console.log("data", data)
-  if (!success) {
+  // if (!success) {
+  if (true) {
     return (
       <div className="w-full max-h-screen h-screen bg-gray-100 overflow-hidden">
-        <Callout type="error">sdfsdf</Callout>
+        <div className="h-screen flex items-center justify-center">
+          <Callout type="error" className="z-10 w-full max-w-md rounded-2xl">
+            <p className="leading-7 first:mt-0">
+              Your account prolific or study, session is not exist.
+            </p>
+            Please visit{" "}
+            <a
+              className="text-primary-600 underline decoration-from-font [text-underline-position:from-font]"
+              href="https://www.prolific.com/"
+            >
+              Prolific
+            </a>{" "}
+            to get access again.
+          </Callout>
+        </div>
       </div>
     )
   }

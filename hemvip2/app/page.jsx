@@ -65,7 +65,7 @@ export default function Home({ searchParams }) {
       if (success) {
         if (data) {
           router.push(
-            `/prolific?PROLIFIC_PID=${data.prolificid}&STUDY_ID=${data.studyid}&SESSION_ID=${data.sessionid}`
+            `/prolific?PROLIFIC_PID=${formData.prolificid}&STUDY_ID=${formData.studyid}&SESSION_ID=${formData.sessionid}`
           )
         } else {
           setIsComplete(true)

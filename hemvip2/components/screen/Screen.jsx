@@ -12,6 +12,7 @@ import { useScreenControl } from "@/contexts/screencontroll"
 import StartupScreen from "./StartupScreen"
 import FinishScreen from "./FinishScreen"
 import useDebouncedCallback from "@/utils/hooks/use-bounded-callback"
+import LoadingSpin from "../loading/LoadingSpin"
 
 export function Screen() {
   const config = useExperimentConfig()
@@ -56,7 +57,7 @@ export function Screen() {
   return (
     <div className="w-full max-h-screen h-screen flex flex-col bg-stone-50">
       {overlay ? <LoadingSpin /> : <></>}
-      <NavScreen name={config.testname} />
+      <NavScreen name={config.name} />
       <div className="w-full h-screen px-[7%] gap-2 p-2 flex flex-col bg-stone-50">
         <Progressbar value={process} />
         <div className="flex flex-col w-full h-full gap-2">

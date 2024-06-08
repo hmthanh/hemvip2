@@ -8,7 +8,6 @@ import axios from "axios"
 // import Session from "@/webmushra/datamodel/Session"
 // import PageTemplateRenderer from "@/webmushra/business/PageTemplateRenderer"
 // import { addPagesToPageManager } from "./page-manager"
-import dataConfig from "../../experiment/1234567/config.json"
 import clientPromise from "@/server/mongodb"
 import { z } from "zod"
 

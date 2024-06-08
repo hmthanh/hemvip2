@@ -23,8 +23,7 @@ export default async function Page({ searchParams }) {
   })
 
   // console.log("data", data)
-  // if (!success) {
-  if (true) {
+  if (!success) {
     return (
       <div className="w-full max-h-screen h-screen bg-gray-100 overflow-hidden">
         <div className="h-screen flex items-center justify-center">

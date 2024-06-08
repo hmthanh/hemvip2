@@ -1,6 +1,7 @@
 import "./globals.css"
 import "../styles/custom.css"
 import { Router } from "next/navigation"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: "HEMVIP2 - Pairwise Comparison of Gesture Generation AI Model Studies",
@@ -10,7 +11,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning dir="ltr">
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   )
 }

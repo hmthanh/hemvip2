@@ -8,6 +8,7 @@ import {
   Transition,
 } from "@headlessui/react"
 import React, { Fragment, useEffect, useState } from "react"
+import cn from "clsx"
 
 export function PopupDialog({ isOpen, onClose, autoCloseTime }) {
   useEffect(() => {
@@ -48,19 +49,32 @@ export function PopupDialog({ isOpen, onClose, autoCloseTime }) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl border-red-200 bg-red-100 text-red-900 border-red-200/30 dark:border-red-200/30 dark:bg-red-900/30 dark:text-red-200 p-6 text-left align-middle shadow-xl transition-all">
-                  <DialogTitle
+                <DialogPanel
+                  className={cn(
+                    "w-full max-w-md transform overflow-hidden rounded-2xl p-3 text-left align-middle shadow-xl transition-all",
+                    "border-red-200 bg-red-100 text-red-900 border-red-200/30",
+                    "dark:border-red-200/30 dark:bg-red-900/30 dark:text-red-200",
+                    "select-none text-xl"
+                  )}
+                >
+                  {/* <DialogTitle
                     as="h3"
                     className="text-lg font-medium leading-6"
                   >
                     Payment successful
-                  </DialogTitle>
-                  <div className="mt-2">
-                    <p className="text-sm ">
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
-                    </p>
+                  </DialogTitle> */}
+                  <div class="text-sm overflow-x-auto flex py-2 ltr:pr-4 rtl:pl-4">
+                    <div class="select-none text-base ltr:pl-3 ltr:pr-2 rtl:pr-3 rtl:pl-2">
+                      💡
+                    </div>
+                    <div class="w-full min-w-0 leading-7">
+                      <p className="text-sm">
+                        Your payment has been successfully submitted. We've sent
+                        you an email with all of the details of your order.
+                      </p>
+                    </div>
                   </div>
+                  {/* <div className="mt-2"></div> */}
                   <div
                     className="absolute bottom-0 left-0 w-full h-[2px] bg-blue-500 animate-loading"
                     style={{ animationDuration: "1.5s" }} // Adjust animation duration here

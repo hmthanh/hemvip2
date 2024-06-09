@@ -27,7 +27,7 @@ export function Screen() {
     leading: true,
   })
 
-  let [isOpenDialog, setIsOpenDialog] = useState(true)
+  let [isOpenDialog, setIsOpenDialog] = useState(false)
   function closeDialog() {
     setIsOpenDialog(false)
   }

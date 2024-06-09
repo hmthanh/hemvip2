@@ -14,31 +14,31 @@ export function ScreenMain({ currentPage }) {
   const video2URL =
     page.type == "video" ? page.videos[1].url : "/gesture_video.mp4"
   const { addAction } = useActionRecorder()
-  console.log(page)
+  // console.log(page)
 
   // Play
   const playLeft = () => {
-    addAction(DEFAULT_ACTION_STRING.playVideoLeft)
+    addAction(DEFAULT_ACTION_STRING.playVideoLeft, currentPage)
   }
 
   const playRight = () => {
-    addAction(DEFAULT_ACTION_STRING.playVideoRight)
+    addAction(DEFAULT_ACTION_STRING.playVideoRight, currentPage)
   }
 
   // Pause
   const pauseLeft = () => {
-    addAction(DEFAULT_ACTION_STRING.pauseVideoLeft)
+    addAction(DEFAULT_ACTION_STRING.pauseVideoLeft, currentPage)
   }
   const pauseRight = () => {
-    addAction(DEFAULT_ACTION_STRING.pauseVideoRight)
+    addAction(DEFAULT_ACTION_STRING.pauseVideoRight, currentPage)
   }
 
   // Scroll video change
   const seekedVideoLeft = () => {
-    addAction(DEFAULT_ACTION_STRING.seekedVideoLeft)
+    addAction(DEFAULT_ACTION_STRING.seekedVideoLeft, currentPage)
   }
   const seekedVideoRight = () => {
-    addAction(DEFAULT_ACTION_STRING.seekedVideoRight)
+    addAction(DEFAULT_ACTION_STRING.seekedVideoRight, currentPage)
   }
 
   return (
@@ -88,7 +88,7 @@ export function ScreenMain({ currentPage }) {
           </div>
         </div>
       </div>
-      <EvaluationBoard />
+      <EvaluationBoard currentPage={currentPage} />
       {/* <ScreenMessage /> */}
     </>
   )

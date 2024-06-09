@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from "react"
 import { ScreenHeader } from "./ScreenHeader"
 import { ScreenMain } from "./ScreenMain"
-import { EvaluationBoard } from "./EvaluationBoard"
-import { ScreenMessage } from "./ScreenMessage"
 import { AnimatePresence, motion } from "framer-motion"
 import { NavScreen, PopupDialog, PopupError, Progressbar } from "."
 import { useExperimentConfig } from "@/contexts/experiment"
@@ -13,11 +11,13 @@ import StartupScreen from "./StartupScreen"
 import FinishScreen from "./FinishScreen"
 import useDebouncedCallback from "@/utils/hooks/use-bounded-callback"
 import LoadingSpin from "../loading/LoadingSpin"
+import { useStudy } from "@/contexts/study"
 
 export function Screen() {
   const config = useExperimentConfig()
   const { currentPage, isStartPage, isEndPage, setPrev, setNext } =
     useScreenControl()
+  const { options, selectStudy } = useStudy()
 
   const [overlay, setOverlay] = useState(false)
   const debouncedPrevPage = useDebouncedCallback(setPrev, 500, {
@@ -26,6 +26,17 @@ export function Screen() {
   const debouncedNextPage = useDebouncedCallback(setNext, 500, {
     leading: true,
   })
+
+  let [isOpenDialog, setIsOpenDialog] = useState(true)
+  function closeDialog() {
+    setIsOpenDialog(false)
+  }
+
+  function openDialog() {
+    setIsOpenDialog(true)
+  }
+
+  // console.log(options)
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -60,6 +71,16 @@ export function Screen() {
       <NavScreen name={config.name} />
       <div className="w-full h-screen px-[7%] gap-2 p-2 flex flex-col bg-stone-50">
         <Progressbar value={process} />
+        {/* <div className="flex items-center justify-center">
+          <button
+            type="button"
+            onClick={openDialog}
+            className="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+          >
+            Open dialog
+          </button>
+        </div> */}
+
         <div className="flex flex-col w-full h-full gap-2">
           <ScreenHeader
             currentPage={currentPage}
@@ -114,7 +135,11 @@ export function Screen() {
           </div>
         </div>
 
-        <PopupDialog />
+        <PopupDialog
+          isOpen={isOpenDialog}
+          onClose={closeDialog}
+          autoCloseTime={50000}
+        />
         <PopupError />
       </div>
     </div>

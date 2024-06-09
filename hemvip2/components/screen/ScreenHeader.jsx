@@ -11,22 +11,22 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
   const { isStartPage, isEndPage } = useScreenControl()
 
   const finishPage = () => {
-    addAction(DEFAULT_ACTION_STRING.clickFinish)
+    addAction(DEFAULT_ACTION_STRING.clickFinish, currentPage)
   }
 
   const prevPage = () => {
     setPrev()
-    addAction(DEFAULT_ACTION_STRING.clickPrev)
+    addAction(DEFAULT_ACTION_STRING.clickPrev, currentPage)
   }
 
   const nextPage = () => {
     setNext()
-    addAction(DEFAULT_ACTION_STRING.clickNext)
+    addAction(DEFAULT_ACTION_STRING.clickNext, currentPage)
   }
 
   const startPage = () => {
     setNext()
-    addAction(DEFAULT_ACTION_STRING.clickStart)
+    addAction(DEFAULT_ACTION_STRING.clickStart, currentPage)
   }
   return (
     // <h3 className="ui-bar ui-bar-a ui-corner-all" id="page_header" style={{ borderRadius: "all" }}>
@@ -53,8 +53,8 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
 
       {isEndPage ? (
         <div></div>
-      ) : (
-        isStartPage ? (<button
+      ) : isStartPage ? (
+        <button
           data-role="button"
           data-inline="true"
           className="py-2 m-1 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
@@ -62,7 +62,9 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
         >
           Start
           <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
-        </button>) : (<button
+        </button>
+      ) : (
+        <button
           data-role="button"
           data-inline="true"
           className="py-2 m-1 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
@@ -70,8 +72,7 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
         >
           Next
           <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
-        </button>)
-
+        </button>
       )}
     </div>
   )

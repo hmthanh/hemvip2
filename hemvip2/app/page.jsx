@@ -59,7 +59,7 @@ export default function Home({ searchParams }) {
         studyid: formData.studyid,
         sessionid: formData.sessionid,
       })
-      console.log(res)
+      // console.log(res)
       const { success, data } = res
       // console.log(res)
       if (success) {

@@ -7,7 +7,6 @@ const PaginationScreen = () => {
   const [currentPage, setCurrentPage] = useState(1)
 
   const nextPage = () => {
-    console.log("object")
     setCurrentPage((prevPage) => prevPage + 1)
   }
 

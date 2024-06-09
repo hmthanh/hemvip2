@@ -1,6 +1,12 @@
+import { useActionRecorder } from "@/contexts/action-recorder"
+import { useStudy } from "@/contexts/study"
 import React from "react"
 
 export default function FinishScreen() {
+  const { actions, screenActions } = useActionRecorder()
+  const { options } = useStudy()
+  // console.log(options)
+
   return (
     <div className="px-8 overflow-y-auto">
       <h2 className="font-semibold tracking-tight text-slate-900 dark:text-slate-100 mt-3 text-2xl">

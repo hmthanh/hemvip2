@@ -11,10 +11,11 @@ import { ScreenControlProvider } from "@/contexts/screencontroll"
 import { ActionRecorderProvider } from "@/contexts/action-recorder"
 import PreventRefreshPage from "@/components/PreventRefreshPage"
 import { Callout } from "@/components/core"
+import { StudyProvider } from "@/contexts/study"
 
 export default async function Page({ searchParams }) {
   const { PROLIFIC_PID, STUDY_ID, SESSION_ID } = searchParams
-  console.log(PROLIFIC_PID, STUDY_ID, SESSION_ID)
+  // console.log(PROLIFIC_PID, STUDY_ID, SESSION_ID)
 
   const { errors, success, data, msg } = await fetchStudy({
     prolificid: PROLIFIC_PID,
@@ -50,8 +51,10 @@ export default async function Page({ searchParams }) {
       <div className="w-full max-h-screen h-screen bg-gray-100 overflow-hidden">
         <ExperimentConfigProvider value={data}>
           <ScreenControlProvider min={0} max={data.pages.length - 1}>
-            <ActionRecorderProvider>
-              <Screen />
+            <ActionRecorderProvider pages={data.pages}>
+              <StudyProvider>
+                <Screen />
+              </StudyProvider>
             </ActionRecorderProvider>
           </ScreenControlProvider>
         </ExperimentConfigProvider>

@@ -77,7 +77,7 @@ export function PopupDialog({ isOpen, onClose, autoCloseTime }) {
                   {/* <div className="mt-2"></div> */}
                   <div
                     className="absolute bottom-0 left-0 w-full h-[2px] bg-blue-500 animate-loading"
-                    style={{ animationDuration: "1.5s" }} // Adjust animation duration here
+                    style={{ animationDuration: "1s" }} // Adjust animation duration here
                   />
                 </DialogPanel>
               </TransitionChild>

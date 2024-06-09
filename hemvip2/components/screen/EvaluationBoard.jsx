@@ -24,6 +24,7 @@ export function EvaluationBoard({ currentPage }) {
     addAction(DEFAULT_ACTION_STRING.clickRight, currentPage)
     selectStudy(DEFAULT_OPTION.right, currentPage)
   }
+
   return (
     <div className="flex-col justify-between items-center">
       <div className="w-full justify-evenly mx-auto flex flex-row">

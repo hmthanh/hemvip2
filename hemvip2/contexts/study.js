@@ -16,6 +16,7 @@ export function StudyProvider({ children }) {
   const [options, setOptions] = useState({})
 
   const selectStudy = (newOption, currentPage) => {
+    console.log(newOption, currentPage)
     setOptions(() => {
       options[currentPage] = newOption
 

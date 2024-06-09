@@ -71,16 +71,6 @@ export function Screen() {
       <NavScreen name={config.name} />
       <div className="w-full h-screen px-[7%] gap-2 p-2 flex flex-col bg-stone-50">
         <Progressbar value={process} />
-        {/* <div className="flex items-center justify-center">
-          <button
-            type="button"
-            onClick={openDialog}
-            className="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
-          >
-            Open dialog
-          </button>
-        </div> */}
-
         <div className="flex flex-col w-full h-full gap-2">
           <ScreenHeader
             currentPage={currentPage}

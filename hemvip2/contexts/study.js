@@ -5,8 +5,8 @@ import { createContext, useContext, useState } from "react"
 
 const StudyContext = createContext({
   options: {
-    0: DEFAULT_OPTION.undefine,
-    1: DEFAULT_OPTION.undefine,
+    0: DEFAULT_OPTION.unselect,
+    1: DEFAULT_OPTION.unselect,
   }, // sample, this will be replace
   selectStudy: (newOption, currentPage) => {},
 })

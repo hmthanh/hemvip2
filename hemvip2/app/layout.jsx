@@ -19,9 +19,14 @@ export default function RootLayout({ children }) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico"></link>
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>HemVIP2</title>
+        <meta
+          name="description"
+          content="Pairwise Comparison of Gesture Generation AI Model Studies"
+        />
+        <meta name="author" content="GENEA" />
+        <title>
+          HEMVIP2 - Pairwise Comparison of Gesture Generation AI Model Studies
+        </title>
       </head>
       <body>
         {children}

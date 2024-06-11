@@ -6,7 +6,7 @@ export const DEFAULT_THEME = {
 }
 
 export const DEFAULT_OPTION = {
-  undefine: "",
+  unselect: "",
   left: "Left Better",
   equal: "Equal",
   right: "Right Better",

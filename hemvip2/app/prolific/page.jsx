@@ -1,10 +1,6 @@
 "use server"
 
-import { Progressbar } from "@/components/screen"
-import { PopupError } from "@/components/screen"
-import { PopupDialog } from "@/components/screen"
 import { Screen } from "@/components/screen"
-import { NavScreen } from "@/components/screen"
 import { fetchStudy } from "./actions"
 import { ExperimentConfigProvider } from "@/contexts/experiment"
 import { ScreenControlProvider } from "@/contexts/screencontroll"

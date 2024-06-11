@@ -49,7 +49,11 @@ export default async function Page({ searchParams }) {
           <ScreenControlProvider min={0} max={data.pages.length - 1}>
             <ActionRecorderProvider pages={data.pages}>
               <StudyProvider>
-                <Screen />
+                <Screen
+                  prolificid={PROLIFIC_PID}
+                  studyid={STUDY_ID}
+                  sessionid={SESSION_ID}
+                />
               </StudyProvider>
             </ActionRecorderProvider>
           </ScreenControlProvider>

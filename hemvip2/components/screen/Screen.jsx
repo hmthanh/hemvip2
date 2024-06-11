@@ -12,12 +12,15 @@ import FinishScreen from "./FinishScreen"
 import useDebouncedCallback from "@/utils/hooks/use-bounded-callback"
 import LoadingSpin from "../loading/LoadingSpin"
 import { useStudy } from "@/contexts/study"
+import { useActionRecorder } from "@/contexts/action-recorder"
+import { finishStudy } from "@/app/prolific/actions"
 
-export function Screen() {
+export function Screen({ prolificid, studyid, sessionid }) {
   const config = useExperimentConfig()
   const { currentPage, isStartPage, isEndPage, setPrev, setNext } =
     useScreenControl()
   const { options, selectStudy } = useStudy()
+  const { actions, screenActions } = useActionRecorder()
 
   const [overlay, setOverlay] = useState(false)
   const debouncedPrevPage = useDebouncedCallback(setPrev, 500, {
@@ -34,6 +37,20 @@ export function Screen() {
 
   function openDialog() {
     setIsOpenDialog(true)
+  }
+
+  const handleFinish = () => {
+    console.log("go handleFinish")
+    finishStudy({
+      prolificid: prolificid,
+      studyid: studyid,
+      sessionid: sessionid,
+      actions: actions,
+      screenActions: screenActions,
+      studySelections: options,
+      code: "CMTN9LUK",
+    })
+    // console.log("prolificid")
   }
 
   // console.log(options)
@@ -115,7 +132,7 @@ export function Screen() {
                   {isStartPage ? (
                     <StartupScreen />
                   ) : isEndPage ? (
-                    <FinishScreen />
+                    <FinishScreen handleFinish={handleFinish} />
                   ) : (
                     <ScreenMain currentPage={currentPage} />
                   )}

@@ -88,8 +88,10 @@ export async function finishStudy({
   sessionid,
   actions,
   screenActions,
-  selectedResult,
+  studySelections,
+  code,
 }) {
+  console.log("server finishStudy")
   const result = studySchema.safeParse({ prolificid, studyid, sessionid })
 
   if (result.success) {
@@ -104,12 +106,24 @@ export async function finishStudy({
         prolific_sessionid: sessionid,
       }
 
-      const result = await db.collection("studies").findOne(filter)
-      // console.log("result", result)
+      // const result = await db.collection("studies").findOne(filter)
+      const updateStudy = {
+        $set: {
+          status: "finish", // New status
+          prolific_userid: prolificid, // New prolific_userid
+          prolific_studyid: studyid, // New prolific_studyid
+          prolific_sessionid: sessionid, // New prolific_sessionid
+          completion_code: code,
+          total_actions: actions,
+        },
+      }
+
+      const result = await db
+        .collection("studies")
+        .updateOne(filter, updateStudy)
 
       if (result) {
         delete result._id
-        // console.log(result)
         return {
           errors: null,
           success: true,

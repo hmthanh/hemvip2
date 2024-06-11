@@ -4,14 +4,13 @@ import React from "react"
 import cn from "clsx"
 import ScreenSelectedResult from "./ScreenSelectedResult"
 import { usePages } from "@/contexts/experiment"
+import { finishStudy } from "@/app/prolific/actions"
 
-export default function FinishScreen() {
+export default function FinishScreen({ handleFinish }) {
   const pages = usePages()
-  const { actions, screenActions } = useActionRecorder()
+
   const { options } = useStudy()
   console.log(options)
-  // console.log(pages)
-  const handleFinish = () => {}
 
   return (
     <div className="px-8 overflow-y-auto">

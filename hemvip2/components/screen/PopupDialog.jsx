@@ -69,8 +69,8 @@ export function PopupDialog({ isOpen, onClose, autoCloseTime }) {
                     </div>
                     <div class="w-full min-w-0 leading-7">
                       <p className="text-sm">
-                        Your payment has been successfully submitted. We've sent
-                        you an email with all of the details of your order.
+                        Your payment has been successfully submitted. We&apos;ve
+                        sent you an email with all of the details of your order.
                       </p>
                     </div>
                   </div>

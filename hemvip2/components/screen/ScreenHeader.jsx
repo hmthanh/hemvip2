@@ -40,9 +40,9 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
           data-role="button"
           data-inline="true"
           onClick={prevPage}
-          className="py-2 m-1 px-5 text-center text-zinc-800 font-bold leading-5 flex items-center gap-2 disabled:text-gray-400"
+          className="py-0 sm:py-2 m-1 px-5 text-center text-zinc-800 font-bold leading-1 sm:leading-5 flex items-center gap-2 disabled:text-gray-400"
         >
-          <ArrowLeftIcon className="h-5 inline shrink-0 ltr:rotate-180" />
+          <ArrowLeftIcon className="h-4 sm:h-5 inline shrink-0 ltr:rotate-180" />
           Previous
         </button>
       )}
@@ -57,21 +57,21 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
         <button
           data-role="button"
           data-inline="true"
-          className="py-2 m-1 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
+          className="py-0 sm:py-2 m-1 px-5 text-center text-zinc-800 font-bold leading-5 flex items-center gap-2 disabled:text-gray-400"
           onClick={startPage}
         >
           Start
-          <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
+          <ArrowRightIcon className="h-4 sm:h-5 inline shrink-0 rtl:rotate-180" />
         </button>
       ) : (
         <button
           data-role="button"
           data-inline="true"
-          className="py-2 m-1 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
+          className="py-0 sm:py-2 m-1 px-5 text-center text-zinc-800 font-bold leading-5 flex items-center gap-2 disabled:text-gray-400"
           onClick={nextPage}
         >
           Next
-          <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
+          <ArrowRightIcon className="h-4 sm:h-5 inline shrink-0 rtl:rotate-180" />
         </button>
       )}
     </div>

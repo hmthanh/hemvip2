@@ -28,7 +28,7 @@ export default function FinishScreen() {
           generated gestures can be used to animate virtual characters, robots,
           or embodied conversational agents.
         </p>
-        <div
+        {/* <div
           className={cn(
             "-mx-6 mb-4 mt-6 overflow-x-auto overscroll-x-contain px-6 pb-4 ",
             "mask-gradient"
@@ -61,7 +61,7 @@ export default function FinishScreen() {
               })}
             </tbody>
           </table>
-        </div>
+        </div> */}
         <p className="mt-3 leading-6 first:mt-0">
           Gesture Generation is the process of generating gestures from speech
           or text. The goal of Gesture Generation is to generate gestures that
@@ -76,13 +76,16 @@ export default function FinishScreen() {
           generated gestures can be used to animate virtual characters, robots,
           or embodied conversational agents.
         </p>
-        <p className="mt-3 leading-6 first:mt-0">
-          Gesture Generation is the process of generating gestures from speech
-          or text. The goal of Gesture Generation is to generate gestures that
-          are natural, realistic, and appropriate for the given context. The
-          generated gestures can be used to animate virtual characters, robots,
-          or embodied conversational agents.
-        </p>
+        <button
+          type="submit"
+          aria-disabled="false"
+          className="flex h-10 px-4 font-bold text-white bg-green-500 dark:border-neutral-800 items-center justify-center rounded-md border text-sm transition-all focus:outline-none"
+        >
+          Sign in
+          <span aria-live="polite" className="sr-only" role="status">
+            Submit form
+          </span>
+        </button>
       </div>
     </div>
   )

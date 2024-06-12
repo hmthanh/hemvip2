@@ -20,13 +20,13 @@ export default async function Page({ searchParams }) {
   })
 
   // console.log("data", data)
-  if (!success) {
+  if (!success || !data) {
     return (
       <div className="w-full max-h-screen h-screen bg-gray-100 overflow-hidden">
         <div className="h-screen flex items-center justify-center">
-          <Callout type="error" className="z-10 w-full max-w-md rounded-2xl">
+          <Callout type="error" className="z-10 w-full max-w-lg rounded-2xl">
             <p className="leading-7 first:mt-0">
-              Your account prolific or study, session is not exist.
+              Your account prolific or study, session is not exist or expired.
             </p>
             Please visit{" "}
             <a

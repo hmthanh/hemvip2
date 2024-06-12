@@ -14,8 +14,10 @@ import LoadingSpin from "../loading/LoadingSpin"
 import { useStudy } from "@/contexts/study"
 import { useActionRecorder } from "@/contexts/action-recorder"
 import { finishStudy } from "@/app/prolific/actions"
+import { useRouter } from "next/navigation"
 
 export function Screen({ prolificid, studyid, sessionid }) {
+  const router = useRouter()
   const config = useExperimentConfig()
   const { currentPage, isStartPage, isEndPage, setPrev, setNext } =
     useScreenControl()
@@ -39,9 +41,9 @@ export function Screen({ prolificid, studyid, sessionid }) {
     setIsOpenDialog(true)
   }
 
-  const handleFinish = () => {
-    console.log("go handleFinish")
-    finishStudy({
+  const handleFinish = async () => {
+    // console.log("go handleFinish")
+    const result = await finishStudy({
       prolificid: prolificid,
       studyid: studyid,
       sessionid: sessionid,
@@ -50,7 +52,11 @@ export function Screen({ prolificid, studyid, sessionid }) {
       studySelections: options,
       code: "CMTN9LUK",
     })
-    // console.log("prolificid")
+    if (result.success) {
+      router.push("https://app.prolific.com/submissions/complete?cc=CMTN9LUK")
+    } else {
+      console.log(result)
+    }
   }
 
   // console.log(options)

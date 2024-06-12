@@ -91,7 +91,6 @@ export async function finishStudy({
   studySelections,
   code,
 }) {
-  console.log("server finishStudy")
   const result = studySchema.safeParse({ prolificid, studyid, sessionid })
 
   if (result.success) {
@@ -106,7 +105,15 @@ export async function finishStudy({
         prolific_sessionid: sessionid,
       }
 
-      // const result = await db.collection("studies").findOne(filter)
+      console.log("server collection.finishStudy")
+      const study = await db.collection("studies").findOne(filter)
+      const newPage = study.pages.map((page, index) => {
+        return { ...page }
+      })
+      console.log("newPage", newPage)
+      // const newPage = study.pages
+
+      // console.log(study.pages)
       const updateStudy = {
         $set: {
           status: "finish", // New status
@@ -122,6 +129,7 @@ export async function finishStudy({
         .collection("studies")
         .updateOne(filter, updateStudy)
 
+      console.log("result", result)
       if (result) {
         delete result._id
         return {

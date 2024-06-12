@@ -42,6 +42,7 @@ export function Screen({ prolificid, studyid, sessionid }) {
   }
 
   const handleFinish = async () => {
+    setOverlay(true)
     // console.log("go handleFinish")
     const result = await finishStudy({
       prolificid: prolificid,
@@ -52,9 +53,11 @@ export function Screen({ prolificid, studyid, sessionid }) {
       studySelections: options,
       code: "CMTN9LUK",
     })
+    setOverlay(false)
     if (result.success) {
       router.push("https://app.prolific.com/submissions/complete?cc=CMTN9LUK")
     } else {
+      router.push("https://app.prolific.com/submissions/complete?cc=CPKBIM6L")
       console.log(result)
     }
   }

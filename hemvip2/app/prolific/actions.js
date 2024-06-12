@@ -105,10 +105,14 @@ export async function finishStudy({
         prolific_sessionid: sessionid,
       }
 
-      console.log("server collection.finishStudy")
+      // console.log("server collection.finishStudy")
       const study = await db.collection("studies").findOne(filter)
       const newPage = study.pages.map((page, index) => {
-        return { ...page }
+        return {
+          actions: screenActions[index],
+          selected: studySelections[index],
+          ...page,
+        }
       })
       console.log("newPage", newPage)
       // const newPage = study.pages

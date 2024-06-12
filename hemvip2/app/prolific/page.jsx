@@ -26,7 +26,7 @@ export default async function Page({ searchParams }) {
         <div className="h-screen flex items-center justify-center">
           <Callout type="error" className="z-10 w-full max-w-lg rounded-2xl">
             <p className="leading-7 first:mt-0">
-              Your account prolific or study, session is not exist or expired.
+              Your account prolific, study or session is not exist or expired.
             </p>
             Please visit{" "}
             <a

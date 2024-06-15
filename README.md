@@ -2,6 +2,10 @@
 
 ![image sample](./image.png)
 
+## Feature support:
+
+- 
+
 ## Quick start
 
 ### Install
@@ -19,3 +23,4 @@ Edit in `hemvip2/my_first_experiment/`
 - `config.json`: Config file for video link
 - `startup.mdx`: Startup page
   `finish.mdx`: Finish page
+  

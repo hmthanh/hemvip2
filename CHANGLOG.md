@@ -13,7 +13,7 @@
 
 #### Status of study
 
-- Each study have 3 states `new` -> `started` -> `finish` | `uncomplete`.
+- Each study have 3 stages `new` -> `started` -> `finish` | `uncomplete`.
 - Prolific Participants first click link will redirect to `https://hemvip.vercel.app/?PROLIFIC_PID=662b614c61935111d01484bf&STUDY_ID=665971ec91884faf5b5284d7&SESSION_ID=0cvbkz5w327p`
 
 #### 1. Generate all study screen
@@ -53,3 +53,23 @@
 - Remove `question`, change to content.
 - Change `stimuli` in each video to `videos`
 - Remove option `showResults` and `writeResults`
+- Each screen study only have two video compare. Sample of `videos`
+
+```json
+{
+  "videos": [
+    {
+      "teamid": "123123",
+      "inputid": "56567342159353489347",
+      "value": 4,
+      "url": "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4"
+    },
+    {
+      "teamid": "645634",
+      "inputid": "56567342159353489347",
+      "value": 9,
+      "url": "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4"
+    }
+  ]
+}
+```

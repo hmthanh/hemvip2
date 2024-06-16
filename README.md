@@ -8,7 +8,7 @@
 
 #### Status of study
 
-- Each study have 3 states `new` -> `started` -> `finish` | `uncomplete`.
+- Each study have 3 stages `new` -> `started` -> `finish` | `uncomplete`.
 - Prolific Participants first click link will redirect to `https://hemvip.vercel.app/?PROLIFIC_PID=662b614c61935111d01484bf&STUDY_ID=665971ec91884faf5b5284d7&SESSION_ID=0cvbkz5w327p`
 
 #### 1. Generate all study screen

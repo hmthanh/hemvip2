@@ -1,7 +1,5 @@
 # HemVip2 - Create a Study Experiment to evaluate Gesture Generation AI Model
 
-![image sample](./image.png)
-
 ## Quick start
 
 ### Install
@@ -12,10 +10,12 @@ npm i
 npm run dev
 ```
 
-### Edit information about your study
+### Database
 
-Edit in `hemvip2/my_first_experiment/`
+#### Create your mongodb cluster and udpate url in .env.local file
 
-- `config.json`: Config file for video link
-- `startup.mdx`: Startup page
-  `finish.mdx`: Finish page
+Edit `env.local`
+
+```bash
+MONGODB_URI=mongodb+srv://hmthanh:Thanh051205@cluster0.bb1owv7.mongodb.net/
+```

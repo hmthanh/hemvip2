@@ -59,5 +59,5 @@ npm run dev
 Edit `env.local`
 
 ```bash
-MONGODB_URI=mongodb+srv://hmthanh:Thanh051205@cluster0.bb1owv7.mongodb.net/
+MONGODB_URI=mongodb+srv://<USER>:<PASSWORD>@cluster0.bb1owv7.mongodb.net/
 ```

@@ -52,12 +52,9 @@ npm i
 npm run dev
 ```
 
-### Edit information about your study
+### Database
 
-Edit in `hemvip2/my_first_experiment/`
-
-- `config.json`: Config file for video link
-- `startup.mdx`: Startup page
+#### Create your mongodb cluster and udpate url in .env.local file
 
 Edit `env.local`
 

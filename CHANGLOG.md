@@ -23,6 +23,7 @@
 **🎯 Feature**
 
 - Navigation with keyboard `ArrowLeft`, `ArrowRight`
+- Prevent user exist during study
 - Support participant study on mobile
 - Preview Finish before submit.
 - Startup guide screen for participant study.
